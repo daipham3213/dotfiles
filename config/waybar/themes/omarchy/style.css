@@ -15,6 +15,10 @@ window#waybar {
     background-color: alpha(@background, 0.9);
 }
 
+window#waybar.overlay {
+    color: alpha(@foreground, 0.8);
+}
+
 .modules-left {
     margin: 8px 0px 8px 10px;
 }
@@ -40,6 +44,7 @@ window#waybar {
 #network,
 #clock,
 #battery,
+#tray,
 #custom-exit,
 #custom-updates,
 #custom-openwebui,

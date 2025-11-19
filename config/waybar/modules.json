@@ -160,5 +160,24 @@
     "format": "",
     "on-click": "nautilus",
     "tooltip-format": "Open Filemanager"
+  },
+  "tray": {
+    "icon-size": 21,
+    "show-passive-items": true
+  },
+  "custom/playerinfo": {
+    "format": "&lt; {} &gt;",
+    "exec": "~/.config/waybar/scripts/playerinfo.sh",
+    "escape": true,
+    "return-type": "json",
+    "interval": 1,
+    "tooltip": true,
+    "on-click-middle": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-click-left": "playerctl previous"
+  },
+  "custom/cava": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/cava.sh"
   }
 }

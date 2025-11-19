@@ -8,6 +8,7 @@ plugins=(
   fast-syntax-highlighting
   copyfile
   copybuffer
+  kubectl
 )
 
 HISTFILE=~/.zsh_history

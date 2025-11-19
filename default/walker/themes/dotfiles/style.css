@@ -1,4 +1,4 @@
-@import "../../../current/theme/walker.css";
+@import "../../../../current/theme/walker.css";
 
 @define-color error_bg_color #C34043;
 @define-color error_fg_color #DCD7BA;

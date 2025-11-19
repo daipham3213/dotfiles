@@ -8,20 +8,6 @@ Parent = "menu"
 function GetEntries()
 	return {
 		{
-			Text = "OCR",
-			Icon = "",
-			Actions = {
-				["OCR"] = [[grim -g "$(slurp)" - | tesseract stdin stdout -l eng | wl-copy]],
-			},
-		},
-		{
-			Text = "Ollama",
-			Icon = "",
-			Actions = {
-				["ollama"] = "walker --theme menus -m menus:ollama -N",
-			},
-		},
-		{
 			Text = "Download video",
 			Icon = "",
 			Actions = {
