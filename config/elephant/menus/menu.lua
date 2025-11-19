@@ -49,13 +49,6 @@ function GetEntries()
 			},
 		},
 		{
-			Text = "Setup",
-			Icon = "󰉉",
-			Actions = {
-				["setup"] = "walker -t menus -m menus:setup -N",
-			},
-		},
-		{
 			Text = "Tools",
 			Icon = "",
 			Actions = {

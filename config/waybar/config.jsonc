@@ -53,6 +53,7 @@
         "cpu",
         "custom/hypridle",
         "battery",
+        "tray",
         "custom/exit"
     ]
 }

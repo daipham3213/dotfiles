@@ -10,11 +10,6 @@ name = "personal"
 prefix = "p:"
 
 [[browsers]]
-name = "Zen"
-command = "zen-browser"
-icon = "zen-browser"
-
-[[browsers]]
-name = "Helium"
-command = "helium-browser"
-icon = "helium-browser"
+name = "Chrome"
+command = "google-chrome-stable"
+icon = "chrome-browser"

@@ -62,7 +62,7 @@ Quick info:
 ### Automatic installer
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Maciejonos/dotfiles/master/setup.sh | bash
+curl -fsSL https://dots.mux0.dev/setup.sh | bash
 ```
 
 **⚠️ Important Notes:**

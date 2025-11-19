@@ -1,16 +1,18 @@
 # Security & Authentication
 gnome-keyring
 polkit-gnome
+keepass
 
 # Browser
-helium-browser-bin
-zen-browser-bin
+google-chrome-stable
 
 # Development
 git
 lazygit
 neovim
 visual-studio-code-bin
+pycharm
+uv
 
 # Terminal & Shell
 ghostty
@@ -72,7 +74,7 @@ bluez-libs
 bluez-utils
 bluetui
 openssh
-ufw
+wireguard-tools
 
 # File Management
 nautilus
@@ -94,10 +96,6 @@ otf-font-awesome
 yaru-icon-theme
 bibata-cursor-theme
 gnome-themes-extra
-
-# Applications
-localsend-bin
-mpv
 
 # Elephant Suite
 elephant
