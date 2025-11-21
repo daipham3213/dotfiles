@@ -2,57 +2,45 @@ Name = "screenshots"
 NamePretty = "Screenshots"
 FixedOrder = true
 HideFromProviderlist = true
-Icon = ""
+Icon = ""
 Parent = "capture"
 function GetEntries()
-    return {
-        {
-            Text = "Area → Clipboard",
-            Icon = "",
-            Actions = {
-                -- hyprshot -m region (mode: region) -c (copy to clipboard)
-                ["area_clipboard"] = "hyprshot -m region -c && notify-send 'Copied Area'",
-            },
-        },
-        {
-            Text = "Area → File",
-            Icon = "",
-            Actions = {
-                -- hyprshot -m region (mode: region) -o (saves to default directory, usually ~/Pictures)
-                ["area_file"] = "hyprshot -m region && notify-send 'Saved Screenshot'",
-            },
-        },
-        {
-            Text = "Window → Clipboard",
-            Icon = "",
-            Actions = {
-                -- hyprshot -m window (mode: window) -c (copy to clipboard)
-                ["window_clipboard"] = "hyprshot -m window -c && notify-send 'Copied Window'",
-            },
-        },
-        {
-            Text = "Window → File",
-            Icon = "",
-            Actions = {
-                -- hyprshot -m window (mode: window)
-                ["window_file"] = "hyprshot -m window && notify-send 'Saved Window'",
-            },
-        },
-        {
-            Text = "Fullscreen → Clipboard",
-            Icon = "",
-            Actions = {
-                -- hyprshot -m output (mode: active output/monitor) -c (copy to clipboard)
-                ["fullscreen_clipboard"] = "hyprshot -m output -c && notify-send 'Copied Fullscreen'",
-            },
-        },
-        {
-            Text = "Fullscreen → File",
-            Icon = "",
-            Actions = {
-                -- hyprshot -m output (mode: active output/monitor)
-                ["fullscreen_file"] = "hyprshot -m output && notify-send 'Saved Fullscreen'",
-            },
-        },
-    }
+	return {
+		{
+			Text = "Area → Clipboard",
+			Actions = {
+				["area_clipboard"] = "grim -g \"$(slurp)\" - | wl-copy && notify-send 'Copied Area'",
+			},
+		},
+		{
+			Text = "Area → File",
+			Actions = {
+				["area_file"] = "grim -g \"$(slurp)\" ~/Pictures/$(date +%Y-%m-%d_%H-%M-%S).png && notify-send 'Saved Screenshot'",
+			},
+		},
+		{
+			Text = "Window → Clipboard",
+			Actions = {
+				["window_clipboard"] = "grim -g \"$(hyprctl -j clients | jq -r '.[] | \"\\(.at[0]),\\(.at[1]) \\(.size[0])x\\(.size[1])\"' | slurp -r)\" - | wl-copy && notify-send 'Copied Window'",
+			},
+		},
+		{
+			Text = "Window → File",
+			Actions = {
+				["window_file"] = "grim -g \"$(hyprctl -j clients | jq -r '.[] | \"\\(.at[0]),\\(.at[1]) \\(.size[0])x\\(.size[1])\"' | slurp -r)\" ~/Pictures/$(date +%Y-%m-%d_%H-%M-%S).png && notify-send 'Saved Window'",
+			},
+		},
+		{
+			Text = "Fullscreen → Clipboard",
+			Actions = {
+				["fullscreen_clipboard"] = "grim - | wl-copy && notify-send 'Copied Fullscreen'",
+			},
+		},
+		{
+			Text = "Fullscreen → File",
+			Actions = {
+				["fullscreen_file"] = "grim ~/Pictures/$(date +%Y-%m-%d_%H-%M-%S).png && notify-send 'Saved Fullscreen'",
+			},
+		},
+	}
 end

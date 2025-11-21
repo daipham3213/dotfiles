@@ -41,8 +41,8 @@ window#waybar.overlay {
 #cpu,
 #bluetooth,
 #pulseaudio,
-#network,
 #clock,
+#network,
 #battery,
 #tray,
 #custom-exit,
@@ -50,6 +50,7 @@ window#waybar.overlay {
 #custom-openwebui,
 #custom-brightness,
 #custom-hypridle,
+#custom-screenrecord,
 #custom-filemanager {
     min-width: 12px;
     margin: 0 8px;
