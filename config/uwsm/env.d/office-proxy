@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+OFFICE_PROXY="http://10.99.244.10:8080"
+OFFICE_GATEWAY="10.99.14.1|10.99.12.1"
+CURRENT_GATEWAY=$(ip route | grep -m 1 default | awk '{print $3}')
+
+export no_proxy=localhost,127.0.0.1,::1,172.168.0.0/24,172.240.0.0/24
+
+# check if the current gateway matches the office gateway and set proxy accordingly
+if [[ "$CURRENT_GATEWAY" =~ $OFFICE_GATEWAY ]]; then
+    export http_proxy=$OFFICE_PROXY
+    export https_proxy=$OFFICE_PROXY
+    echo "Office proxy activated"
+else
+    echo "Not connected to office network, proxy not activated"
+fi
+

@@ -1,0 +1,67 @@
+# Core system tools
+git
+base-devel
+openssh
+
+# Programming languages and runtimes
+go
+uv
+
+# Shell and terminal
+fish
+starship
+kitty
+
+# Editor
+neovim
+
+# Hyprland desktop
+hyprland
+hyprlock
+hyprpaper
+hyprpolkitagent
+uwsm
+ly
+
+# Desktop UI and utilities
+waybar
+dunst
+rofi
+nautilus
+firefox
+fastfetch
+btop
+
+# Clipboard and media controls
+wl-clipboard
+cliphist
+playerctl
+
+# Audio, Bluetooth, and Wi-Fi tools
+wiremix
+bluetui
+impala
+
+# Networking and VPN
+wireguard-tools
+openvpn3
+cloudflared-bin
+
+# Input method
+fcitx5
+fcitx5-qt
+fcitx5-configtool
+fcitx5-lotus-bin
+
+# Theming, wallpapers, and images
+awww
+wallust
+imagemagick
+
+# Fonts
+ttf-cascadia-mono-nerd
+ttf-firacode-nerd
+
+# Secrets and keyring
+libsecret
+gnome-keyring

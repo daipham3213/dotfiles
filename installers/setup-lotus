@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+sudo systemctl enable --now fcitx5-lotus-server@$(whoami).service || (sudo systemd-sysusers && sudo systemctl enable --now fcitx5-lotus-server@$(whoami).service)

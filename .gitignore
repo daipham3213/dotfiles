@@ -1,0 +1,24 @@
+# Claude Code local state
+.claude/
+
+# Editor and OS noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+.cache/
+
+# Local secrets and environment overrides
+.env
+.env.*
+*.secret
+*.key
+
+# Generated desktop/theme cache
+config/btop/themes/

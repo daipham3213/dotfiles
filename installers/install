@@ -1,0 +1,120 @@
+#!/usr/bin/bash
+
+set -e
+
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+
+# ensure the dotfiles folder is in the correct location
+EXPECTED_PATH="$HOME/.dotfiles/installers"
+if [[ "$SCRIPT_DIR" != "$EXPECTED_PATH" ]]; then
+  echo "ERROR: This script must be run from $EXPECTED_PATH"
+  echo "Current location: $SCRIPT_DIR"
+  echo ""
+  echo "Please move the dotfiles folder to ~/.dotfiles and run this script again."
+  exit 1
+fi
+
+source "$SCRIPT_DIR/lib/utils.sh"
+
+is_installed() {
+    pacman -Q "$1" &>/dev/null
+}
+
+install_paru() {
+    if ! command -v paru &> /dev/null; then
+        echo "Installing paru AUR helper..."
+        git clone https://aur.archlinux.org/paru.git /tmp/paru
+        (cd /tmp/paru && makepkg -si --noconfirm)
+        rm -rf /tmp/paru
+    else
+        echo "paru is already installed, skipping..."
+    fi
+
+
+install_packages() {
+    echo "Installing system packages..."
+    local total=$(grep -v '^#' "$1" | grep -v '^$' | wc -l)
+    local current=0
+    local failed_packages=()
+
+    while IFS= read -r pkg || [ -n "$pkg" ]; do
+    [[ -z "$pkg" || "$pkg" =~ ^# ]] && continue
+
+    current=$((current + 1))
+
+    if is_installed "${pkg}"; then
+      log_progress "$pkg (already installed)" "$current/$total"
+      continue
+    fi
+
+    # Try to install, handle conflicts gracefully
+    if spinner "Installing $pkg... [$current/$total]" paru --noconfirm --needed -S "${pkg}" 2>&1; then
+      log_success "$pkg"
+    else
+      log_error "Failed to install: $pkg"
+      failed_packages+=("$pkg")
+    fi
+    done <"$1"
+
+    # Report failed packages at the end
+    if [ ${#failed_packages[@]} -gt 0 ]; then
+        log_error "The following packages failed to install:"
+        for pkg in "${failed_packages[@]}"; do
+        log_detail "$pkg"
+        done
+        log_info "You can try installing them manually with: paru -S <package_name>"
+    fi
+}
+
+clear
+log_header "Dotfiles Installation"
+
+START_TIME=$(date +%s)
+TOTAL_STEPS=8
+CURRENT_STEP=0
+
+if ! is_installed "paru"; then
+  CURRENT_STEP=$((CURRENT_STEP + 1))
+  log_step "[$CURRENT_STEP/$TOTAL_STEPS] Installing paru AUR helper"
+  install_paru
+fi
+
+CURRENT_STEP=$((CURRENT_STEP + 1))
+log_step "[$CURRENT_STEP/$TOTAL_STEPS] Installing system packages"
+install_packages "$SCRIPT_DIR/pkgs.txt"
+
+CURRENT_STEP=$((CURRENT_STEP + 1))
+log_step "[$CURRENT_STEP/$TOTAL_STEPS] Setting up dotfiles configuration"
+bash "$SCRIPT_DIR/setup-config"
+
+CURRENT_STEP=$((CURRENT_STEP + 1))
+log_step "[$CURRENT_STEP/$TOTAL_STEPS] Setting up Ly display manager"
+bash "$SCRIPT_DIR/setup-ly"
+
+CURRENT_STEP=$((CURRENT_STEP + 1))
+log_step "[$CURRENT_STEP/$TOTAL_STEPS] Setting up LazyVim Neovim configuration"
+bash "$SCRIPT_DIR/setup-lazyvim"
+
+CURRENT_STEP=$((CURRENT_STEP + 1))
+log_step "[$CURRENT_STEP/$TOTAL_STEPS] Setting up Fcitx5 Lotus input method"
+bash "$SCRIPT_DIR/setup-lotus"
+
+END_TIME=$(date +%s)
+TOTAL_TIME=$((END_TIME - START_TIME))
+MINUTES=$((TOTAL_TIME / 60))
+SECONDS=$((TOTAL_TIME % 60))
+
+clear
+log_header "Installation Complete!"
+echo
+log_success "Installed in ${MINUTES}m ${SECONDS}s"
+echo
+
+echo
+log_info "Please reboot for all changes to take effect"
+echo
+
+if ask_yes_no "Reboot now?"; then
+  clear
+  systemctl reboot --no-wall 2>/dev/null || reboot 2>/dev/null
+fi

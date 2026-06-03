@@ -40,13 +40,13 @@ palette = "saliencedark"
 # NOTE: prefer '' over "" for paths, avoids escaping.
 # template: A RELATIVE path that points to `~/.config/wallust/template` (depends on platform)
 # target: ABSOLUTE path in which to place a file with generated templated values.
-# ¡ If either one is a directory, then both SHOULD be one. !
-# zathura = { template = 'zathura', target = '~/.config/zathura/zathurarc' }
-waybar = { template = "waybar", target = "~/.config/waybar/color.css" }
+# waybar = { template = "waybar", target = "~/.config/waybar/color.css" }
 hyprland = { template = "hyprland", target = "~/.config/wallust/wal_hyprland.conf" }
 kitty = { src="kitty", dst="~/.config/kitty/colors.conf"}
 dunstrc = { src="dunstrc", dst="~/.config/dunst/dunstrc" }
 colors = { src="colors", dst="~/.cache/wallust/colors.sh" }
+gtk3 = { src="gtk3.0", dst="~/.config/gtk3.0/gtk.css" }
+gtk4 = { src="gtk4.0", dst="~/.config/gtk4.0/gtk.css" }
 
 [hooks]
 # Run commands when wallust is invoked. Useful to avoid scripting.

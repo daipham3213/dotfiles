@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -e
+
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+DOTFILES_DIR=$HOME/.dotfiles
+
+source "$SCRIPT_DIR/lib/utils.sh"
+
+yes | cp -rf "$DOTFILES_DIR/config/ $HOME/.config/"
+log_success "Configuration files copied successfully."
