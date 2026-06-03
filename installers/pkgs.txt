@@ -43,6 +43,7 @@ bluetui
 impala
 
 # Networking and VPN
+ inetutils
 wireguard-tools
 openvpn3
 cloudflared-bin
