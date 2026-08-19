@@ -7,5 +7,5 @@ DOTFILES_DIR=$HOME/.dotfiles
 
 source "$SCRIPT_DIR/lib/utils.sh"
 
-yes | cp -rf "$DOTFILES_DIR/config/ $HOME/.config/"
+yes | cp -rf "$DOTFILES_DIR/config/" "$HOME/.config/"
 log_success "Configuration files copied successfully."

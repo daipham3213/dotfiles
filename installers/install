@@ -29,6 +29,7 @@ install_paru() {
     else
         echo "paru is already installed, skipping..."
     fi
+}
 
 
 install_packages() {
