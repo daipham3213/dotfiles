@@ -1,3 +1,5 @@
+@import "colors.rasi"
+
 configuration {
     modi:                "drun";
     display-drun:        ">";
@@ -11,22 +13,22 @@ configuration {
 }
 
 * {
-    background-color:           #111111;
-    border-color: #444F5F;
-    text-color: #444F5F;
-    normal-background:          #111111;
-    normal-foreground: #444F5F;
-    selected-normal-background: #444F5F;
-    selected-normal-foreground: #000000;
-    prompt-foreground: #444F5F;
-    placeholder-foreground:     #808080;
+    background-color:           @background;
+    border-color: @accent;
+    text-color: @accent;
+    normal-background:          @background;
+    normal-foreground: @accent;
+    selected-normal-background: @accent;
+    selected-normal-foreground: @accent-foreground;
+    prompt-foreground: @accent;
+    placeholder-foreground:     @placeholder;
 }
 
 window {
     width:               20%;
-    background-color:    #111111;
+    background-color:    @background;
     border:              1px;
-    border-color: #444F5F;
+    border-color: @accent;
     border-radius:       0px;
     padding:             4px 5px;
     location:            north;
@@ -44,7 +46,7 @@ mainbox {
 
 inputbar {
     background-color:    transparent;
-    text-color: #444F5F;
+    text-color: @accent;
     padding:             4px 0px;
     spacing:             0;
     children:            [ prompt, entry ];
@@ -52,15 +54,15 @@ inputbar {
 
 prompt {
     background-color:    transparent;
-    text-color: #444F5F;
+    text-color: @accent;
     padding:             0px 4px 0px 0px;
     content:             ">";
 }
 
 entry {
     background-color:    transparent;
-    text-color: #444F5F;
-    placeholder-color:   #808080;
+    text-color: @accent;
+    placeholder-color:   @placeholder;
     placeholder:         "";
     cursor:              default;
 }
@@ -78,7 +80,7 @@ listview {
 
 element {
     background-color:    transparent;
-    text-color: #444F5F;
+    text-color: @accent;
     border-radius:       0px;
     padding:             2px 4px;
     cursor:              default;
@@ -86,18 +88,18 @@ element {
 
 element alternate normal {
     background-color:    transparent;
-    text-color: #444F5F;
+    text-color: @accent;
 }
 
 element selected {
-    background-color:    #FFFFFF;
-    text-color: #444F5F;
+    background-color:    @accent;
+    text-color: @accent-foreground;
 }
 
 element-text {
     background-color:    transparent;
     text-color:          inherit;
-    highlight:           #FFFFFF;
+    highlight:           @accent;
     cursor:              default;
 }
 
@@ -109,6 +111,6 @@ message {
 
 textbox {
     background-color:    transparent;
-    text-color: #444F5F;
+    text-color: @accent;
     padding:             2px 4px;
 }

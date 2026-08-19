@@ -56,7 +56,7 @@ fcitx5-lotus-bin
 
 # Theming, wallpapers, and images
 awww
-wallust
+matugen
 imagemagick
 
 # Fonts

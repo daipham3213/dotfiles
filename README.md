@@ -2,7 +2,7 @@
 
 Personal Arch Linux dotfiles for a Hyprland-based Wayland desktop.
 
-This repository contains configuration files and installer scripts for setting up a desktop environment with Hyprland, fish, Kitty, Waybar, Dunst, Rofi, Neovim, Fcitx5 Lotus, Wallust, and other daily-use tools.
+This repository contains configuration files and installer scripts for setting up a desktop environment with Hyprland, fish, Kitty, Waybar, Dunst, Rofi, Neovim, Fcitx5 Lotus, matugen, and other daily-use tools.
 
 ## What is included
 
@@ -44,7 +44,7 @@ This repository contains configuration files and installer scripts for setting u
   - Fcitx5 Lotus
 
 - **Theming**
-  - Wallust
+  - matugen (Material You color generation from the current wallpaper)
   - wallpaper/theme templates
   - GTK theme templates
   - Nerd fonts
@@ -145,7 +145,7 @@ config/fish/      -> ~/.config/fish/
 config/hypr/      -> ~/.config/hypr/
 config/kitty/     -> ~/.config/kitty/
 config/waybar/    -> ~/.config/waybar/
-config/wallust/   -> ~/.config/wallust/
+config/matugen/   -> ~/.config/matugen/
 ```
 
 After changing files in this repository, rerun the config setup script to copy them again:

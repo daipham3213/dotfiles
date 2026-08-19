@@ -1,3 +1,5 @@
+@import "colors.rasi"
+
 configuration {
     font:                        "JetBrainsMono Nerd Font 12";
     show-icons:                  true;
@@ -7,9 +9,9 @@ configuration {
 }
 
 * {
-    background-color:            #111111;
-    text-color: #444F5F;
-    border-color: #444F5F;
+    background-color:            @background;
+    text-color: @accent;
+    border-color: @accent;
 }
 
 window {
@@ -19,10 +21,10 @@ window {
     height:                      70%;
     x-offset:                   -15px;
     y-offset:                    0px;
-    background-color:            #111111;
+    background-color:            @background;
     border:                      1px;
     border-radius:               0px;
-    border-color: #444F5F;
+    border-color: @accent;
 }
 
 mainbox {
@@ -34,7 +36,7 @@ mainbox {
 
 inputbar {
     background-color:            transparent;
-    text-color: #444F5F;
+    text-color: @accent;
     padding:                     4px 0px;
     spacing:                     0;
     children:                    [ "prompt", "entry" ];
@@ -42,14 +44,14 @@ inputbar {
 
 prompt {
     background-color:            transparent;
-    text-color: #444F5F;
+    text-color: @accent;
     padding:                     0px 4px 0px 0px;
     content:                     ">";
 }
 
 entry {
     background-color:            transparent;
-    text-color: #444F5F;
+    text-color: @accent;
     placeholder:                 "";
     cursor:                      default;
 }
@@ -76,7 +78,7 @@ element {
 element selected {
     background-color:            transparent;
     border:                      2px;
-    border-color: #444F5F;
+    border-color: @accent;
 }
 
 element-icon {
