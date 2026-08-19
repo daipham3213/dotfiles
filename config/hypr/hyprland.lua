@@ -232,9 +232,9 @@ hl.window_rule({
 -- hl.window_rule({ match = { class = "jetbrains-.*", float = true }, no_initial_focus = true })
 -- hl.window_rule({ match = { class = "jetbrains-.*", float = true }, opacity = "1 override 1 override 1 override" })
 
--- "Smart gaps" -- @dynamic_smartgaps
--- hl.workspace_rule({ workspace = "w[t1]", gaps_out = 0, gaps_in = 0 })
--- hl.workspace_rule({ workspace = "f[1]",  gaps_out = 0, gaps_in = 0 })
+-- Smart gaps
+-- hl.workspace_rule({ workspace = "w[t1]", gaps_out = 0, gaps_in = 0 }) -- @dynamic_smartgaps
+-- hl.workspace_rule({ workspace = "f[1]",  gaps_out = 0, gaps_in = 0 }) -- @dynamic_smartgaps
 
 
 ---------------------
