@@ -19,9 +19,9 @@ log_info "LazyVim starter cloned"
 
 if [ -d "$DOTFILES_DIR/default/nvim" ]; then
   cp -rf "$DOTFILES_DIR/default/nvim"/* "$HOME/.config/nvim/"
+  log_info "Applied custom LazyVim overrides from $DOTFILES_DIR/default/nvim"
 else
-  log_error "Could not setup lazyvim"
-  exit 1
+  log_info "No custom LazyVim overrides found, using stock LazyVim starter"
 fi
 
 # Append custom options to options.lua

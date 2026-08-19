@@ -71,8 +71,12 @@ clear
 log_header "Dotfiles Installation"
 
 START_TIME=$(date +%s)
-TOTAL_STEPS=8
+TOTAL_STEPS=9
 CURRENT_STEP=0
+
+CURRENT_STEP=$((CURRENT_STEP + 1))
+log_step "[$CURRENT_STEP/$TOTAL_STEPS] Installing base-devel"
+sudo pacman -S --needed --noconfirm base-devel
 
 if ! is_installed "paru"; then
   CURRENT_STEP=$((CURRENT_STEP + 1))
